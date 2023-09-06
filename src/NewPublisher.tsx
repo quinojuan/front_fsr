@@ -16,6 +16,10 @@ const NewPublisher = () => {
     grupo: "",
   });
 
+  const genero = ["HOMBRE", "MUJER"];
+  const esperanza = ["OTRAS_OVEJAS", "UNGIDO"];
+  const grupo = ["G1", "G2", "G3", "G4"];
+
   const handleChange = (e: any) => {
     const { name, value } = e.target;
 
@@ -23,16 +27,14 @@ const NewPublisher = () => {
       ...formData,
       [name]: value,
     });
+    console.log(formData);
   };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:3000/publicadores",
-        formData
-      );
-      console.log(response.data);
+      await axios.post("http://localhost:3000/publicador", formData);
+      alert("Envio exitoso!")
     } catch (error: any) {
       alert(error.message);
     }
@@ -61,19 +63,22 @@ const NewPublisher = () => {
           />
         </div>
         <div>
-          <label>Genero:</label>
-          <input
-            type="text"
-            name="genero"
-            value={formData.genero}
-            onChange={handleChange}
-          />
+          <label htmlFor="">Genero</label>
+          <select name="genero" value={formData.genero} onChange={handleChange}>
+            <option value="">Selecciona...</option>
+            {genero.map((opcion, index) => (
+              <option value={opcion} key={index}>
+                {opcion}
+              </option>
+            ))}
+          </select>
         </div>
         <div>
           <label>Fecha de nacimiento:</label>
           <input
             type="text"
             name="fecha_nacimiento"
+            placeholder="DD-MM-YYYY"
             value={formData.fecha_nacimiento}
             onChange={handleChange}
           />
@@ -83,18 +88,25 @@ const NewPublisher = () => {
           <input
             type="text"
             name="fecha_bautismo"
+            placeholder="DD-MM-YYYY o PNB o 00/00/0000"
             value={formData.fecha_bautismo}
             onChange={handleChange}
           />
         </div>
         <div>
-          <label>Esperanza:</label>
-          <input
-            type="text"
+          <label htmlFor="">Esperanza</label>
+          <select
             name="esperanza"
             value={formData.esperanza}
             onChange={handleChange}
-          />
+          >
+            <option value="">Selecciona...</option>
+            {esperanza.map((opcion, index) => (
+              <option value={opcion} key={index}>
+                {opcion}
+              </option>
+            ))}
+          </select>
         </div>
         <div>
           <label>Anciano:</label>
@@ -133,14 +145,18 @@ const NewPublisher = () => {
           />
         </div>
         <div>
-          <label>Grupo:</label>
-          <input
-            type="text"
-            name="grupo"
-            value={formData.grupo}
-            onChange={handleChange}
-          />
+          <label htmlFor="">Grupo</label>
+          <select name="grupo" value={formData.grupo} onChange={handleChange}>
+            <option value="">Selecciona...</option>
+            {grupo.map((opcion, index) => (
+              <option value={opcion} key={index}>
+                {opcion}
+              </option>
+            ))}
+          </select>
         </div>
+        <br />
+        <button type="submit">Enviar</button>
       </form>
     </div>
   );
