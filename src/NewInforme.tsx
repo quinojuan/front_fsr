@@ -13,7 +13,7 @@ const NewInforme = () => {
     revisitas: 0,
     estudios: 0,
     notas: "",
-    publicadorId:0
+    publicadorId: 0,
   });
 
   const meses = [
@@ -33,13 +33,13 @@ const NewInforme = () => {
 
   const allPublicadores = async () => {
     const response = await axios("http://localhost:3000/publicadores");
-    setPublicadores(response.data)
-    console.log(publicadores)
+    setPublicadores(response.data);
+    console.log(publicadores);
   };
 
   useEffect(() => {
-    allPublicadores()
-  }, [])
+    allPublicadores();
+  }, []);
 
   const handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -65,16 +65,23 @@ const NewInforme = () => {
     <div>
       <h1>New Informe</h1>
       <form onSubmit={handleSubmit}>
-
         <div>
           <label htmlFor="">ID</label>
-          <select name="publicadorId" value={formData.publicadorId} onChange={handleChange}>
-             <option value={}></option>
+          <select
+            name="publicadorId"
+            value={formData.publicadorId}
+            onChange={handleChange}
+          >
+            <option value={1}></option>
           </select>
         </div>
         <div>
           <label htmlFor="">Publicador</label>
-          <select name="publicador" value={formData.publicador} onChange={handleChange}>
+          <select
+            name="publicador"
+            value={formData.publicador}
+            onChange={handleChange}
+          >
             <option value="">Selecciona...</option>
             {publicadores.map((opcion, index) => (
               <option value={opcion.nombre} key={index}>
