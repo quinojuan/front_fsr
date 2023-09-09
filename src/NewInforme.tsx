@@ -1,6 +1,8 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
+import "/node_modules/primeflex/primeflex.css";
+import "./index.css";
 
 const NewInforme = () => {
   const [publicadores, setPublicadores] = useState<any[]>([]);
@@ -55,29 +57,40 @@ const NewInforme = () => {
     e.preventDefault();
     try {
       await axios.post("http://localhost:3000/informe", formData);
+      console.log(formData)
       alert("Envio exitoso!");
     } catch (error: any) {
       alert(error.message);
     }
   };
 
+  const encontrarId = () => {
+    const publicadorEncontrado = publicadores.find(pub => pub.nombre.includes(formData.publicador))
+    console.log(publicadorEncontrado)
+    // setFormData({
+    //   ...formData,
+    //   publicadorId: publicadorEncontrado.id,
+    // });
+    return publicadorEncontrado.id
+  }
+
   return (
     <div>
       <h1>New Informe</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="">ID</label>
-          <select
+      <form className="flex flex-column sm:w-2 w-full" onSubmit={handleSubmit}>
+        <div className="w-full flex justify-content-between">
+          <label className="inline-block w-4 text-right pr-2">ID</label>
+          <input
+            className="w-8"
+            type="text"
             name="publicadorId"
-            value={formData.publicadorId}
-            onChange={handleChange}
-          >
-            <option value={1}></option>
-          </select>
+            value={encontrarId()}
+          />
         </div>
-        <div>
-          <label htmlFor="">Publicador</label>
+        <div className="w-full">
+          <label className="inline-block w-4 text-right pr-2">Publicador</label>
           <select
+            className="w-8"
             name="publicador"
             value={formData.publicador}
             onChange={handleChange}
@@ -90,9 +103,16 @@ const NewInforme = () => {
             ))}
           </select>
         </div>
-        <div>
-          <label htmlFor="">Mes</label>
-          <select name="mes" value={formData.mes} onChange={handleChange}>
+        <div className="w-full">
+          <label className="inline-block w-4 text-right pr-2" htmlFor="">
+            Mes
+          </label>
+          <select
+            className="w-8"
+            name="mes"
+            value={formData.mes}
+            onChange={handleChange}
+          >
             <option value="">Selecciona...</option>
             {meses.map((opcion, index) => (
               <option value={opcion} key={index}>
@@ -101,54 +121,60 @@ const NewInforme = () => {
             ))}
           </select>
         </div>
-        <div>
-          <label>Publicaciones:</label>
+        <div className="w-full">
+          <label className="inline-block w-4 text-right pr-2">Publicaciones:</label>
           <input
+            className="w-8"
             type="text"
             name="publicaciones"
             value={formData.publicaciones}
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label>Videos:</label>
+        <div className="w-full">
+          <label className="inline-block w-4 text-right pr-2">Videos:</label>
           <input
+            className="w-8"
             type="text"
             name="videos"
             value={formData.videos}
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label>Horas:</label>
+        <div className="w-full">
+          <label className="inline-block w-4 text-right pr-2">Horas:</label>
           <input
+            className="w-8"
             type="text"
             name="horas"
             value={formData.horas}
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label>Revisitas:</label>
+        <div className="w-full">
+          <label className="inline-block w-4 text-right pr-2">Revisitas:</label>
           <input
+            className="w-8"
             type="text"
             name="revisitas"
             value={formData.revisitas}
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label>Estudios:</label>
+        <div className="w-full">
+          <label className="inline-block w-4 text-right pr-2">Estudios:</label>
           <input
+            className="w-8"
             type="text"
             name="estudios"
             value={formData.estudios}
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label>Notas:</label>
+        <div className="w-full">
+          <label className="inline-block w-4 text-right pr-2">Notas:</label>
           <input
+            className="w-8"
             type="text"
             name="notas"
             value={formData.notas}
