@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "/node_modules/primeflex/primeflex.css";
 import "./index.css";
@@ -15,7 +14,6 @@ const NewInforme = () => {
     revisitas: 0,
     estudios: 0,
     notas: "",
-    publicadorId: 0,
   });
 
   const meses = [
@@ -33,13 +31,12 @@ const NewInforme = () => {
     "DICIEMBRE",
   ];
 
-  const allPublicadores = async () => {
-    const response = await axios("http://localhost:3000/publicadores");
-    setPublicadores(response.data);
-    console.log(publicadores);
-  };
-
   useEffect(() => {
+    const allPublicadores = async () => {
+      const response = await axios("http://localhost:3000/publicadores");
+      setPublicadores(response.data);
+      console.log(response.data);
+    };
     allPublicadores();
   }, []);
 
@@ -57,36 +54,27 @@ const NewInforme = () => {
     e.preventDefault();
     try {
       await axios.post("http://localhost:3000/informe", formData);
-      console.log(formData)
+      console.log("Se envió la data...", formData);
       alert("Envio exitoso!");
     } catch (error: any) {
       alert(error.message);
     }
+    setFormData({
+      publicador: "",
+      mes: "",
+      publicaciones: 0,
+      videos: 0,
+      horas: 0,
+      revisitas: 0,
+      estudios: 0,
+      notas: "",
+    });
   };
-
-  const encontrarId = () => {
-    const publicadorEncontrado = publicadores.find(pub => pub.nombre.includes(formData.publicador))
-    console.log(publicadorEncontrado)
-    // setFormData({
-    //   ...formData,
-    //   publicadorId: publicadorEncontrado.id,
-    // });
-    return publicadorEncontrado.id
-  }
 
   return (
     <div>
       <h1>New Informe</h1>
       <form className="flex flex-column sm:w-2 w-full" onSubmit={handleSubmit}>
-        <div className="w-full flex justify-content-between">
-          <label className="inline-block w-4 text-right pr-2">ID</label>
-          <input
-            className="w-8"
-            type="text"
-            name="publicadorId"
-            value={encontrarId()}
-          />
-        </div>
         <div className="w-full">
           <label className="inline-block w-4 text-right pr-2">Publicador</label>
           <select
@@ -97,7 +85,7 @@ const NewInforme = () => {
           >
             <option value="">Selecciona...</option>
             {publicadores.map((opcion, index) => (
-              <option value={opcion.nombre} key={index}>
+              <option value={`${opcion.nombre} ${opcion.apellido}`} key={index}>
                 {`${opcion.nombre} ${opcion.apellido}`}
               </option>
             ))}
@@ -122,7 +110,9 @@ const NewInforme = () => {
           </select>
         </div>
         <div className="w-full">
-          <label className="inline-block w-4 text-right pr-2">Publicaciones:</label>
+          <label className="inline-block w-4 text-right pr-2">
+            Publicaciones:
+          </label>
           <input
             className="w-8"
             type="text"
