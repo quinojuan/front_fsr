@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "/node_modules/primeflex/primeflex.css";
 import "./index.css";
@@ -175,6 +176,7 @@ const NewInforme = () => {
         <br />
         <button type="submit">Enviar</button>
       </form>
+      <Link to={"/"}>Home</Link>
     </div>
   );
 };

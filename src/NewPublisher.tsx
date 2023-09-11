@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const NewPublisher = () => {
   const [formData, setFormData] = useState({
@@ -34,10 +35,23 @@ const NewPublisher = () => {
     e.preventDefault();
     try {
       await axios.post("http://localhost:3000/publicador", formData);
-      alert("Envio exitoso!")
+      alert("Envio exitoso!");
     } catch (error: any) {
       alert(error.message);
     }
+    setFormData({
+      nombre: "",
+      apellido: "",
+      genero: "",
+      fecha_nacimiento: "",
+      fecha_bautismo: "",
+      esperanza: "",
+      anciano: 0,
+      siervo_ministerial: 0,
+      precursor_regular: 0,
+      precursor_especial: 0,
+      grupo: "",
+    });
   };
 
   return (
@@ -47,7 +61,7 @@ const NewPublisher = () => {
         <div>
           <label className="inline-block w-4 text-right pr-2">Nombre:</label>
           <input
-          className="w-8"
+            className="w-8"
             type="text"
             name="nombre"
             value={formData.nombre}
@@ -57,7 +71,7 @@ const NewPublisher = () => {
         <div>
           <label className="inline-block w-4 text-right pr-2">Apellido:</label>
           <input
-          className="w-8"
+            className="w-8"
             type="text"
             name="apellido"
             value={formData.apellido}
@@ -65,7 +79,9 @@ const NewPublisher = () => {
           />
         </div>
         <div>
-          <label className="inline-block w-4 text-right pr-2" htmlFor="">Genero</label>
+          <label className="inline-block w-4 text-right pr-2" htmlFor="">
+            Genero
+          </label>
           <select name="genero" value={formData.genero} onChange={handleChange}>
             <option value="">Selecciona...</option>
             {genero.map((opcion, index) => (
@@ -76,9 +92,11 @@ const NewPublisher = () => {
           </select>
         </div>
         <div>
-          <label className="inline-block w-4 text-right pr-2">Fecha de nacimiento:</label>
+          <label className="inline-block w-4 text-right pr-2">
+            Fecha de nacimiento:
+          </label>
           <input
-          className="w-8"
+            className="w-8"
             type="text"
             name="fecha_nacimiento"
             placeholder="DD-MM-YYYY"
@@ -87,20 +105,24 @@ const NewPublisher = () => {
           />
         </div>
         <div>
-          <label className="inline-block w-4 text-right pr-2">Fecha de bautismo:</label>
+          <label className="inline-block w-4 text-right pr-2">
+            Fecha de bautismo:
+          </label>
           <input
-          className="w-8"
+            className="w-8"
             type="text"
             name="fecha_bautismo"
-            placeholder="DD-MM-YYYY o PNB o 00/00/0000"
+            placeholder="DD-MM-YYYY o PNB"
             value={formData.fecha_bautismo}
             onChange={handleChange}
           />
         </div>
         <div>
-          <label className="inline-block w-4 text-right pr-2" htmlFor="">Esperanza</label>
+          <label className="inline-block w-4 text-right pr-2" htmlFor="">
+            Esperanza
+          </label>
           <select
-          className="w-8"
+            className="w-8"
             name="esperanza"
             value={formData.esperanza}
             onChange={handleChange}
@@ -116,7 +138,7 @@ const NewPublisher = () => {
         <div>
           <label className="inline-block w-4 text-right pr-2">Anciano:</label>
           <input
-          className="w-8"
+            className="w-8"
             type="text"
             name="anciano"
             value={formData.anciano}
@@ -124,9 +146,11 @@ const NewPublisher = () => {
           />
         </div>
         <div>
-          <label className="inline-block w-4 text-right pr-2">Siervo Ministerial:</label>
+          <label className="inline-block w-4 text-right pr-2">
+            Siervo Ministerial:
+          </label>
           <input
-          className="w-8"
+            className="w-8"
             type="text"
             name="siervo_ministerial"
             value={formData.siervo_ministerial}
@@ -134,9 +158,11 @@ const NewPublisher = () => {
           />
         </div>
         <div>
-          <label className="inline-block w-4 text-right pr-2">Precursor Regular:</label>
+          <label className="inline-block w-4 text-right pr-2">
+            Precursor Regular:
+          </label>
           <input
-          className="w-8"
+            className="w-8"
             type="text"
             name="precursor_regular"
             value={formData.precursor_regular}
@@ -144,9 +170,11 @@ const NewPublisher = () => {
           />
         </div>
         <div>
-          <label className="inline-block w-4 text-right pr-2">Precursor Especial:</label>
+          <label className="inline-block w-4 text-right pr-2">
+            Precursor Especial:
+          </label>
           <input
-          className="w-8"
+            className="w-8"
             type="text"
             name="precursor_especial"
             value={formData.precursor_especial}
@@ -154,8 +182,15 @@ const NewPublisher = () => {
           />
         </div>
         <div>
-          <label className="inline-block w-4 text-right pr-2" htmlFor="">Grupo</label>
-          <select className="w-8" name="grupo" value={formData.grupo} onChange={handleChange}>
+          <label className="inline-block w-4 text-right pr-2" htmlFor="">
+            Grupo
+          </label>
+          <select
+            className="w-8"
+            name="grupo"
+            value={formData.grupo}
+            onChange={handleChange}
+          >
             <option value="">Selecciona...</option>
             {grupo.map((opcion, index) => (
               <option value={opcion} key={index}>
@@ -165,8 +200,12 @@ const NewPublisher = () => {
           </select>
         </div>
         <br />
-        <button className="flex " type="submit">Enviar</button>
+        <button className="flex " type="submit">
+          Enviar
+        </button>
       </form>
+      <br />
+      <Link to={"/"}>Home</Link>
     </div>
   );
 };
