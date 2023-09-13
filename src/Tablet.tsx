@@ -14,6 +14,7 @@ import {
 import { Input, Button } from "@chakra-ui/react";
 
 const Tablet = () => {
+  const [info, setInfo] = useState(data)
   const [query, setQuery] = useState("");
 
   const handleInput = (e: any) => {
@@ -26,12 +27,16 @@ const Tablet = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      await axios(`http://localhost:3000/consulta?id=${query}`);
+      const response = await axios(`http://localhost:3000/consulta?id=${query}`)
+      setInfo(response.data)
     } catch (error: any) {
       alert(error.message);
     }
   };
 
+  useEffect(() => {
+    console.log(info)
+  })
   return (
     <>
       <Input placeholder="Ingrese un dato" w={"15%"} mr={10} onChange={handleInput}/>
@@ -62,7 +67,7 @@ const Tablet = () => {
           </Tr>
         </Thead>
         <Tbody>
-          {data.map((item, idx) => (
+          {info.map((item, idx) => (
             <Tr key={idx}>
               <Td>{item.id}</Td>
               <Td>{item.nombre}</Td>
