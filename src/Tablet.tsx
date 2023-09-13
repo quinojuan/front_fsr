@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import data from "./data.json";
+import { Link } from "react-router-dom";
 import {
   Table,
   Thead,
@@ -14,7 +15,7 @@ import {
 import { Input, Button } from "@chakra-ui/react";
 
 const Tablet = () => {
-  const [info, setInfo] = useState(data)
+  const [info, setInfo] = useState(data);
   const [query, setQuery] = useState("");
 
   const handleInput = (e: any) => {
@@ -27,19 +28,28 @@ const Tablet = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await axios(`http://localhost:3000/consulta?id=${query}`)
-      setInfo(response.data)
+      const response = await axios(
+        `http://localhost:3000/consulta?id=${query}`
+      );
+      setInfo(response.data);
     } catch (error: any) {
       alert(error.message);
     }
   };
 
   useEffect(() => {
-    console.log(info)
-  })
+    console.log(info);
+  });
   return (
     <>
-      <Input placeholder="Ingrese un dato" w={"15%"} mr={10} onChange={handleInput}/>
+      <Link to={"/"}>Home</Link>
+      <br />
+      <Input
+        placeholder="Ingrese un Nº de ID"
+        w={"20%"}
+        mr={10}
+        onChange={handleInput}
+      />
       <Button colorScheme="blue" onClick={handleSubmit}>
         Enviar consulta
       </Button>
