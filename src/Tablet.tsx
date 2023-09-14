@@ -10,26 +10,33 @@ import {
   Tr,
   Th,
   Td,
-  TableCaption,
 } from "@chakra-ui/table";
 import { Input, Button } from "@chakra-ui/react";
 
 const Tablet = () => {
   const [info, setInfo] = useState(data);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState({
+    id: "",
+    nombre: ""
+  });
 
   const handleInput = (e: any) => {
     e.preventDefault();
-    const { value } = e.target;
-    console.log(value);
-    setQuery(value);
+    const { name, value } = e.target;
+    console.log({value});
+    console.log({name});
+
+    setQuery({
+      ...query,
+      [name]: value
+    });
   };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
       const response = await axios(
-        `http://localhost:3000/consulta?id=${query}`
+        `http://localhost:3000/consulta?id=${query.id}`
       );
       setInfo(response.data);
     } catch (error: any) {
@@ -46,6 +53,7 @@ const Tablet = () => {
       <br />
       <Input
         placeholder="Ingrese un Nº de ID"
+        name="id" // me faltaba este identificador
         w={"20%"}
         mr={10}
         onChange={handleInput}
