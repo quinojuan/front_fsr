@@ -49,7 +49,7 @@ const Tablet = () => {
   });
   return (
     <>
-      <Link to={"/"}>Home</Link>
+      <Link to={"/"}><Button>Home</Button></Link>
       <br />
       <Input
         placeholder="Ingrese un Nº de ID"
@@ -71,7 +71,7 @@ const Tablet = () => {
         size={"sm"}
       >
         <Thead>
-          <Tr>
+          <Tr border={"solid"}>
             <Th>ID</Th>
             <Th>Nombre</Th>
             <Th>Apellido</Th>

@@ -61,6 +61,7 @@ const NewPublisher = () => {
         <div>
           <label className="inline-block w-4 text-right pr-2">Nombre:</label>
           <input
+          
             className="w-8"
             type="text"
             name="nombre"
