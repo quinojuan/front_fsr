@@ -2,33 +2,25 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import data from "./data.json";
 import { Link } from "react-router-dom";
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-} from "@chakra-ui/table";
+import { Table, Thead, Tbody, Tfoot, Tr, Th, Td } from "@chakra-ui/table";
 import { Input, Button } from "@chakra-ui/react";
 
 const Tablet = () => {
   const [info, setInfo] = useState(data);
   const [query, setQuery] = useState({
     id: "",
-    nombre: ""
+    nombre: "",
   });
 
   const handleInput = (e: any) => {
     e.preventDefault();
     const { name, value } = e.target;
-    console.log({value});
-    console.log({name});
+    console.log({ value });
+    console.log({ name });
 
     setQuery({
       ...query,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -49,19 +41,22 @@ const Tablet = () => {
   });
   return (
     <>
-      <Link to={"/"}><Button>Home</Button></Link>
+      <Link to={"/"}>
+        <Button className="mb-3">Home</Button>
+      </Link>
       <br />
-      <Input
-        placeholder="Ingrese un Nº de ID"
-        name="id" // me faltaba este identificador
-        w={"20%"}
-        mr={10}
-        onChange={handleInput}
-      />
-      <Button colorScheme="blue" onClick={handleSubmit}>
-        Enviar consulta
-      </Button>
-      <br />
+      <div className="m-auto w-8 flex justify-content-center">
+        <Input
+          placeholder="Ingrese un Nº de ID"
+          name="id" // me faltaba este identificador
+          w={"20%"}
+          mr={10}
+          onChange={handleInput}
+        />
+        <Button colorScheme="blue" onClick={handleSubmit}>
+          Enviar consulta
+        </Button>
+      </div>
       <br />
       <Table
         width={"80%"}

@@ -75,7 +75,7 @@ const NewInforme = () => {
 
   return (
     <div>
-      <h3 className="font-bold text-lg text-center mb-3">New Informe</h3>
+      <h3 className="font-bold text-lg mb-3">Nuevo Informe:</h3>
       <form className="flex flex-column sm:w-2 w-full" onSubmit={handleSubmit}>
         <div className="w-full mb-1">
           <label className="inline-block w-4 text-right pr-2">Publicador</label>
@@ -175,7 +175,8 @@ const NewInforme = () => {
         </div>
 
         <br />
-        <button type="submit">Enviar</button>
+        <Button type="submit" className="bg-blue-400 text-blue-50 w-4 m-auto mb-3">Enviar</Button>
+        {/* <button type="submit" className="bg-blue-400 w-4 m-auto">Enviar</button> */}
       </form>
       <Link to={"/"}><Button>Home</Button></Link>
     </div>

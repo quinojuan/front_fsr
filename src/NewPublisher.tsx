@@ -1,3 +1,4 @@
+import { Button } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -56,12 +57,11 @@ const NewPublisher = () => {
 
   return (
     <div>
-      <h1>New Publisher</h1>
+      <h3 className="font-bold text-lg mb-3">Nuevo Publicador:</h3>
       <form className="flex flex-column sm:w-3 w-full" onSubmit={handleSubmit}>
         <div className="mb-1">
           <label className="inline-block w-4 text-right pr-2">Nombre:</label>
           <input
-          
             className="w-8"
             type="text"
             name="nombre"
@@ -201,12 +201,17 @@ const NewPublisher = () => {
           </select>
         </div>
         <br />
-        <button className="flex " type="submit">
+        <Button
+          type="submit"
+          className="bg-blue-400 text-blue-50 w-4 m-auto mb-3"
+        >
           Enviar
-        </button>
+        </Button>
       </form>
       <br />
-      <Link to={"/"}>Home</Link>
+      <Link to={"/"}>
+        <Button>Home</Button>
+      </Link>
     </div>
   );
 };
