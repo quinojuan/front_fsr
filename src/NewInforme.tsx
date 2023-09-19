@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "/node_modules/primeflex/primeflex.css";
 import "./index.css";
+import { Button } from "@chakra-ui/react";
 
 const NewInforme = () => {
   const [publicadores, setPublicadores] = useState<any[]>([]);
@@ -74,9 +75,9 @@ const NewInforme = () => {
 
   return (
     <div>
-      <h1>New Informe</h1>
+      <h3 className="font-bold text-lg text-center mb-3">New Informe</h3>
       <form className="flex flex-column sm:w-2 w-full" onSubmit={handleSubmit}>
-        <div className="w-full">
+        <div className="w-full mb-1">
           <label className="inline-block w-4 text-right pr-2">Publicador</label>
           <select
             className="w-8"
@@ -92,7 +93,7 @@ const NewInforme = () => {
             ))}
           </select>
         </div>
-        <div className="w-full">
+        <div className="w-full mb-1">
           <label className="inline-block w-4 text-right pr-2" htmlFor="">
             Mes
           </label>
@@ -110,7 +111,7 @@ const NewInforme = () => {
             ))}
           </select>
         </div>
-        <div className="w-full">
+        <div className="w-full mb-1">
           <label className="inline-block w-4 text-right pr-2">
             Publicaciones:
           </label>
@@ -122,7 +123,7 @@ const NewInforme = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="w-full">
+        <div className="w-full mb-1">
           <label className="inline-block w-4 text-right pr-2">Videos:</label>
           <input
             className="w-8"
@@ -132,7 +133,7 @@ const NewInforme = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="w-full">
+        <div className="w-full mb-1">
           <label className="inline-block w-4 text-right pr-2">Horas:</label>
           <input
             className="w-8"
@@ -142,7 +143,7 @@ const NewInforme = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="w-full">
+        <div className="w-full mb-1">
           <label className="inline-block w-4 text-right pr-2">Revisitas:</label>
           <input
             className="w-8"
@@ -152,7 +153,7 @@ const NewInforme = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="w-full">
+        <div className="w-full mb-1">
           <label className="inline-block w-4 text-right pr-2">Estudios:</label>
           <input
             className="w-8"
@@ -176,7 +177,7 @@ const NewInforme = () => {
         <br />
         <button type="submit">Enviar</button>
       </form>
-      <Link to={"/"}>Home</Link>
+      <Link to={"/"}><Button>Home</Button></Link>
     </div>
   );
 };

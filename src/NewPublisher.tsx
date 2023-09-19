@@ -58,7 +58,7 @@ const NewPublisher = () => {
     <div>
       <h1>New Publisher</h1>
       <form className="flex flex-column sm:w-3 w-full" onSubmit={handleSubmit}>
-        <div>
+        <div className="mb-1">
           <label className="inline-block w-4 text-right pr-2">Nombre:</label>
           <input
           
@@ -69,7 +69,7 @@ const NewPublisher = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="mb-1">
           <label className="inline-block w-4 text-right pr-2">Apellido:</label>
           <input
             className="w-8"
@@ -79,7 +79,7 @@ const NewPublisher = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="mb-1">
           <label className="inline-block w-4 text-right pr-2" htmlFor="">
             Genero
           </label>
@@ -92,7 +92,7 @@ const NewPublisher = () => {
             ))}
           </select>
         </div>
-        <div>
+        <div className="mb-1">
           <label className="inline-block w-4 text-right pr-2">
             Fecha de nacimiento:
           </label>
@@ -105,7 +105,7 @@ const NewPublisher = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="mb-1">
           <label className="inline-block w-4 text-right pr-2">
             Fecha de bautismo:
           </label>
@@ -118,7 +118,7 @@ const NewPublisher = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="mb-1">
           <label className="inline-block w-4 text-right pr-2" htmlFor="">
             Esperanza
           </label>
@@ -136,7 +136,7 @@ const NewPublisher = () => {
             ))}
           </select>
         </div>
-        <div>
+        <div className="mb-1">
           <label className="inline-block w-4 text-right pr-2">Anciano:</label>
           <input
             className="w-8"
@@ -146,7 +146,7 @@ const NewPublisher = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="mb-1">
           <label className="inline-block w-4 text-right pr-2">
             Siervo Ministerial:
           </label>
@@ -158,7 +158,7 @@ const NewPublisher = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="mb-1">
           <label className="inline-block w-4 text-right pr-2">
             Precursor Regular:
           </label>
@@ -170,7 +170,7 @@ const NewPublisher = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="mb-1">
           <label className="inline-block w-4 text-right pr-2">
             Precursor Especial:
           </label>
@@ -182,7 +182,7 @@ const NewPublisher = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="mb-1">
           <label className="inline-block w-4 text-right pr-2" htmlFor="">
             Grupo
           </label>

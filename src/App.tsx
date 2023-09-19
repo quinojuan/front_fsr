@@ -9,6 +9,7 @@ import Welcome from "./Welcome";
 import NewInforme from "./NewInforme";
 import NewPublisher from "./NewPublisher";
 import Tablet from "./Tablet";
+import "/node_modules/primeflex/primeflex.css";
 
 function App() {
   return (

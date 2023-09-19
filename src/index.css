@@ -157,3 +157,9 @@
     --gray-900: #212121;
     color-scheme: light;
 }
+
+input, select {
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
