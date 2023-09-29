@@ -80,7 +80,7 @@ const NewInforme = () => {
         <div className="w-full mb-1">
           <label className="inline-block w-4 text-right pr-2">Publicador</label>
           <select
-            className="w-8"
+            className="w-8 p-1"
             name="publicador"
             value={formData.publicador}
             onChange={handleChange}
@@ -98,7 +98,7 @@ const NewInforme = () => {
             Mes
           </label>
           <select
-            className="w-8"
+            className="w-8 p-1"
             name="mes"
             value={formData.mes}
             onChange={handleChange}
@@ -116,7 +116,7 @@ const NewInforme = () => {
             Publicaciones:
           </label>
           <input
-            className="w-8"
+            className="w-8 p-1"
             type="text"
             name="publicaciones"
             value={formData.publicaciones}
@@ -126,7 +126,7 @@ const NewInforme = () => {
         <div className="w-full mb-1">
           <label className="inline-block w-4 text-right pr-2">Videos:</label>
           <input
-            className="w-8"
+            className="w-8 p-1"
             type="text"
             name="videos"
             value={formData.videos}
@@ -136,7 +136,7 @@ const NewInforme = () => {
         <div className="w-full mb-1">
           <label className="inline-block w-4 text-right pr-2">Horas:</label>
           <input
-            className="w-8"
+            className="w-8 p-1"
             type="text"
             name="horas"
             value={formData.horas}
@@ -146,7 +146,7 @@ const NewInforme = () => {
         <div className="w-full mb-1">
           <label className="inline-block w-4 text-right pr-2">Revisitas:</label>
           <input
-            className="w-8"
+            className="w-8 p-1"
             type="text"
             name="revisitas"
             value={formData.revisitas}
@@ -156,7 +156,7 @@ const NewInforme = () => {
         <div className="w-full mb-1">
           <label className="inline-block w-4 text-right pr-2">Estudios:</label>
           <input
-            className="w-8"
+            className="w-8 p-1"
             type="text"
             name="estudios"
             value={formData.estudios}
@@ -166,7 +166,7 @@ const NewInforme = () => {
         <div className="w-full">
           <label className="inline-block w-4 text-right pr-2">Notas:</label>
           <input
-            className="w-8"
+            className="w-8 p-1"
             type="text"
             name="notas"
             value={formData.notas}

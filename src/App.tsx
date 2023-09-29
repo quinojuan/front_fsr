@@ -2,8 +2,6 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Link,
-  NavLink,
 } from "react-router-dom";
 import Welcome from "./Welcome";
 import NewInforme from "./NewInforme";
@@ -15,6 +13,7 @@ function App() {
   return (
     <>
       <Router>
+        
         <Routes>
           <Route path="/" element={<Welcome />} />
           <Route path="/newinforme" element={<NewInforme />} />

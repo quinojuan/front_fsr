@@ -1,8 +1,8 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import data from "./data.json";
 import { Link } from "react-router-dom";
-import { Table, Thead, Tbody, Tfoot, Tr, Th, Td } from "@chakra-ui/table";
+import { Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/table";
 import { Input, Button } from "@chakra-ui/react";
 
 const Tablet = () => {
@@ -15,20 +15,19 @@ const Tablet = () => {
   const handleInput = (e: any) => {
     e.preventDefault();
     const { name, value } = e.target;
-    console.log({ value });
-    console.log({ name });
 
     setQuery({
       ...query,
       [name]: value,
     });
+    console.log({query})
   };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
       const response = await axios(
-        `http://localhost:3000/consulta?id=${query.id}`
+        `http://localhost:3000/consulta?id=${query.id}&nombre=${query.nombre}`
       );
       setInfo(response.data);
     } catch (error: any) {
@@ -49,6 +48,13 @@ const Tablet = () => {
         <Input
           placeholder="Ingrese un Nº de ID"
           name="id" // me faltaba este identificador
+          w={"20%"}
+          mr={10}
+          onChange={handleInput}
+        />
+        <Input
+          placeholder="Ingrese un nombre"
+          name="nombre" // me faltaba este identificador
           w={"20%"}
           mr={10}
           onChange={handleInput}
