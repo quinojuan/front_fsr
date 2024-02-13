@@ -11,8 +11,8 @@ export type Publisher = {
   precursor_regular: number | boolean;
   precursor_especial: number | boolean;
   misionero: number | boolean;
-  hombre: number | boolean;
-  mujer: number | boolean;
+  hombre: boolean;
+  mujer: boolean;
   otras_ovejas: number | boolean;
   ungido: number | boolean;
   _grupo: number;

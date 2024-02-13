@@ -5,6 +5,18 @@ export const Informe = () => {
   const { publicadores, informes, loading, error } = usePublishers();
   console.log(publicadores)
 
+  const mesesOrdenados = [
+    "septiembre", "octubre", "noviembre", "diciembre",
+    "enero", "febrero", "marzo", "abril", "mayo",
+    "junio", "julio", "agosto"
+];
+
+const compararMeses = (a, b) => {
+  return mesesOrdenados.indexOf(a.mes) - mesesOrdenados.indexOf(b.mes);
+};
+
+informes.sort(compararMeses)
+
   const headers = [
     "Año de servicio",
     "Participacion en el ministerio",
@@ -93,7 +105,7 @@ export const Informe = () => {
                         className="mr-1"
                         name="hombre"
                         type="checkbox"
-                        readOnly checked={hombre}
+                        checked={hombre}
                         />
                       <label htmlFor="">Hombre</label>
                     </div>
@@ -160,7 +172,7 @@ export const Informe = () => {
                   <input
                     className="mr-1"
                     type="checkbox"
-                    readOnly checked={precursor_especial}
+                    checked={precursor_especial}
                   />
                   <label htmlFor="">Precursor especial</label>
                 </div>
@@ -218,13 +230,13 @@ export const Informe = () => {
                       <tr key={id}>
                         <td className="text-center align-middle">{mes}</td>
                         <td className="text-center align-middle">
-                          {participacion_en_el_ministerio}
+                          {participacion_en_el_ministerio ? (<span>&#x2611;</span>) : (<span>&#x2610;</span>) }
                         </td>
                         <td className="text-center align-middle">
                           {cursos_biblicos}
                         </td>
                         <td className="text-center align-middle">
-                          {precursor_auxiliar}
+                          {precursor_auxiliar ? (<span>&#x2611;</span>) : (<span>&#x2610;</span>) }
                         </td>
                         <td className="text-center align-middle">{horas}</td>
                         <td className="text-center align-middle text-nowrap">
