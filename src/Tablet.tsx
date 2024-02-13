@@ -30,7 +30,7 @@ const Tablet = () => {
         `http://localhost:3000/consulta?id=${query.id}&nombre=${query.nombre}`
       );
       setInfo(response.data);
-    } catch (error: any) {
+    } catch (error:any) {
       alert(error.message);
     }
   };
