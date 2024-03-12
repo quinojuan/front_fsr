@@ -1,21 +1,28 @@
 import usePublishers from "./hooks/usePublishers";
-import { Publisher } from "./types/Types";
 
 export const Informe = () => {
   const { publicadores, informes, loading, error } = usePublishers();
-  console.log(publicadores)
 
   const mesesOrdenados = [
-    "septiembre", "octubre", "noviembre", "diciembre",
-    "enero", "febrero", "marzo", "abril", "mayo",
-    "junio", "julio", "agosto"
-];
+    "septiembre",
+    "octubre",
+    "noviembre",
+    "diciembre",
+    "enero",
+    "Febrero",
+    "marzo",
+    "abril",
+    "mayo",
+    "junio",
+    "julio",
+    "agosto",
+  ];
 
-const compararMeses = (a, b) => {
-  return mesesOrdenados.indexOf(a.mes) - mesesOrdenados.indexOf(b.mes);
-};
+  const compararMeses = (a, b) => {
+    return mesesOrdenados.indexOf(a.mes) - mesesOrdenados.indexOf(b.mes);
+  };
 
-informes.sort(compararMeses)
+  informes.sort(compararMeses);
 
   const headers = [
     "Año de servicio",
@@ -29,16 +36,13 @@ informes.sort(compararMeses)
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const day = date.getDate().toString().padStart(2, "0");
     return `${day}-${month}-${year}`;
   };
 
   return (
     <div style={{ width: "90%", margin: "auto" }}>
-      <h4 className="text-center mb-3">
-        REGISTRO DE PUBLICADOR DE LA CONGREGACIÓN
-      </h4>
       {publicadores?.map(
         ({
           id,
@@ -55,87 +59,64 @@ informes.sort(compararMeses)
           precursor_regular,
           siervo_ministerial,
           ungido,
+          is_active
         }) => (
           <div key={id}>
+            <h4 className={is_active ? "text-center mb-3" : "text-center mb-3 text-danger"}>
+              REGISTRO DE PUBLICADOR DE LA CONGREGACIÓN
+            </h4>
             <section>
-              <div className="d-flex align-content-center">
-                <label htmlFor="" className="mb-0 p-1">
+              <div className="d-flex">
+                <label htmlFor="" className="mb-0 p-1 fw-bold">
                   Nombre:
                 </label>{" "}
-                <input
-                  key={id}
-                  name="nombreCompleto"
-                  className="bg-secondary pl-2 flex-grow-1 text-white"
-                  type="text"
-                  value={`${apellido} ${nombre}`}
-                  />
+                <p className="bg-light pl-2 p-1 flex-grow-1 mb-0">
+                  {`${apellido} ${nombre}`}
+                </p><span className="d-print-none">id: {id}</span>
               </div>
               <div className="d-flex mt-1">
                 <div className="flex-grow-1 mr-3">
-                  <div className="d-flex align-content-center mb-1">
-                    <label htmlFor="" className="mb-0 p-1">
+                  <div className="d-flex mb-1">
+                    <label htmlFor="" className="mb-0 p-1 fw-bold">
                       Fecha de nacimiento:
                     </label>{" "}
-                    <input
-                      className="bg-secondary pl-2 flex-grow-1 text-white"
-                      name="fecha_nacimiento"
-                      type="text"
-                      value={fecha_nacimiento ? formatDate(fecha_nacimiento) : ""}
-                      />
+                    <p className="bg-light pl-2 p-1 flex-grow-1 mb-0">
+                      {fecha_nacimiento ? formatDate(fecha_nacimiento) : ""}
+                    </p>
                   </div>
 
-                  <div className="d-flex align-content-center">
-                    <label htmlFor="" className="mb-0 p-1">
+                  <div className="d-flex">
+                    <label htmlFor="" className="mb-0 p-1 fw-bold">
                       Fecha de bautismo:
-                    </label>
-                    <input
-                      className="bg-secondary pl-2 flex-grow-1 text-white"
-                      name="fecha_bautismo"
-                      type="text"
-                      value={fecha_bautismo ? formatDate(fecha_bautismo) : ""}
-                      />
+                    </label>{" "}
+                    <p className="bg-light pl-2 p-1 flex-grow-1 mb-0">
+                      {fecha_bautismo ? formatDate(fecha_bautismo) : ""}
+                    </p>
                   </div>
                 </div>
 
                 <div className="d-flex mt-2">
                   <div className="mr-2">
                     <div>
-                      {/* <span>{hombre ? (<span>true</span>) : (<span style={{display: "inline-block", width: "12px", height: "12px", border: "1px solid #999", borderRadius: "3px", fontSize: "1px", color: "black", backgroundColor: "black"}}>false</span>)}</span> */}
-                      <input
-                        className="mr-1"
-                        name="hombre"
-                        type="checkbox"
-                        checked={hombre}
-                        />
-                      <label htmlFor="">Hombre</label>
+                      {hombre ? <span>&#x2611;</span> : <span>&#x2610;</span>}
+                      <label htmlFor="">&nbsp;Hombre</label>
                     </div>
                     <div>
-                      <input
-                        className="mr-1"
-                        name="mujer"
-                        type="checkbox"
-                        readOnly checked={mujer}
-                        />
-                      <label htmlFor="">Mujer</label>
+                      {mujer ? <span>&#x2611;</span> : <span>&#x2610;</span>}
+                      <label htmlFor="">&nbsp;Mujer</label>
                     </div>
                   </div>
                   <div>
                     <div>
-                      <input
-                        className="mr-1"
-                        name="otras_ovejas"
-                        type="checkbox"
-                        readOnly checked={otras_ovejas}
-                        />
+                      {otras_ovejas ? (
+                        <span>&#x2611;</span>
+                      ) : (
+                        <span>&#x2610;</span>
+                      )}
                       <label htmlFor="">Otras ovejas</label>
                     </div>
                     <div>
-                      <input
-                        className="mr-1"
-                        name="ungido"
-                        type="checkbox"
-                        readOnly checked={ungido}
-                        />
+                      {ungido ? <span>&#x2611;</span> : <span>&#x2610;</span>}
                       <label htmlFor="">Ungido</label>
                     </div>
                   </div>
@@ -144,71 +125,56 @@ informes.sort(compararMeses)
 
               <div className="d-flex justify-content-around mt-2">
                 <div>
-                  <input
-                    className="mr-1"
-                    name="anciano"
-                    type="checkbox"
-                    readOnly checked={anciano}
-                  />
-                  <label htmlFor="">Anciano</label>
+                  {anciano ? <span>&#x2611;</span> : <span>&#x2610;</span>}
+                  <label htmlFor="" className="">
+                    Anciano
+                  </label>
                 </div>
                 <div>
-                  <input
-                    className="mr-1"
-                    type="checkbox"
-                    readOnly checked={siervo_ministerial}
-                  />
+                  {siervo_ministerial ? (
+                    <span>&#x2611;</span>
+                  ) : (
+                    <span>&#x2610;</span>
+                  )}
                   <label htmlFor="">Siervo ministerial</label>
                 </div>
                 <div>
-                  <input
-                    className="mr-1"
-                    type="checkbox"
-                    readOnly checked={precursor_regular}
-                  />
+                  {precursor_regular ? (
+                    <span>&#x2611;</span>
+                  ) : (
+                    <span>&#x2610;</span>
+                  )}
                   <label htmlFor="">Precursor regular</label>
                 </div>
                 <div>
-                  <input
-                    className="mr-1"
-                    type="checkbox"
-                    checked={precursor_especial}
-                  />
+                  {precursor_especial ? (
+                    <span>&#x2611;</span>
+                  ) : (
+                    <span>&#x2610;</span>
+                  )}
                   <label htmlFor="">Precursor especial</label>
                 </div>
                 <div>
-                  <input
-                    className="mr-1"
-                    type="checkbox"
-                    readOnly checked={misionero}
-                  />
+                  {misionero ? <span>&#x2611;</span> : <span>&#x2610;</span>}
                   <label htmlFor="">Misionero que sirve en el campo</label>
                 </div>
               </div>
             </section>
-            <table className="table table-bordered table-dark table-sm">
+            <table className="table table-bordered border border-black table-sm">
               <thead>
                 <tr>
                   {headers.map((item) => {
                     if (item === "Horas")
                       return (
-                        <th
-                          scope="col"
-                          className="text-center align-middle"
-                          key={item}
-                        >
+                        <th className="text-center align-middle" key={item}>
                           {item}{" "}
-                          <span className="font-weight-normal">
+                          <span className="fw-normal">
                             (Si es precursor o misionero que sirve en el campo)
                           </span>
                         </th>
                       );
                     return (
-                      <th
-                        scope="col"
-                        className="text-center align-middle"
-                        key={item}
-                      >
+                      <th className="text-center align-middle" key={item}>
                         {item}
                       </th>
                     );
@@ -219,24 +185,35 @@ informes.sort(compararMeses)
                 {informes
                   .filter((informe) => informe.publicador_id === id)
                   .map(
-                    ({
-                      mes,
-                      participacion_en_el_ministerio,
-                      cursos_biblicos,
-                      horas,
-                      notas,
-                      precursor_auxiliar,
-                    }) => (
-                      <tr key={id}>
+                    (
+                      {
+                        mes,
+                        participacion_en_el_ministerio,
+                        cursos_biblicos,
+                        horas,
+                        notas,
+                        precursor_auxiliar,
+                      },
+                      idx
+                    ) => (
+                      <tr key={idx}>
                         <td className="text-center align-middle">{mes}</td>
                         <td className="text-center align-middle">
-                          {participacion_en_el_ministerio ? (<span>&#x2611;</span>) : (<span>&#x2610;</span>) }
+                          {participacion_en_el_ministerio ? (
+                            <span>&#x2611;</span>
+                          ) : (
+                            <span>&#x2610;</span>
+                          )}
                         </td>
                         <td className="text-center align-middle">
                           {cursos_biblicos}
                         </td>
                         <td className="text-center align-middle">
-                          {precursor_auxiliar ? (<span>&#x2611;</span>) : (<span>&#x2610;</span>) }
+                          {precursor_auxiliar ? (
+                            <span>&#x2611;</span>
+                          ) : (
+                            <span>&#x2610;</span>
+                          )}
                         </td>
                         <td className="text-center align-middle">{horas}</td>
                         <td className="text-center align-middle text-nowrap">
@@ -247,6 +224,7 @@ informes.sort(compararMeses)
                   )}
               </tbody>
             </table>
+            <div style={{ pageBreakAfter: "always" }}></div>
           </div>
         )
       )}
