@@ -9,7 +9,7 @@ export const Informe = () => {
     "noviembre",
     "diciembre",
     "enero",
-    "Febrero",
+    "febrero",
     "marzo",
     "abril",
     "mayo",
