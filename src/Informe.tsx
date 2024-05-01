@@ -10,7 +10,7 @@ export const Informe = () => {
     "diciembre",
     "enero",
     "febrero",
-    "marzo",
+    "Marzo",
     "abril",
     "mayo",
     "junio",
@@ -33,7 +33,7 @@ export const Informe = () => {
     "Notas",
   ];
 
-  const formatDate = (dateString) => {
+  const formatDate = (dateString:string) => {
     const date = new Date(dateString);
     const year = date.getFullYear();
     const month = (date.getMonth() + 1).toString().padStart(2, "0");
