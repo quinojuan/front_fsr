@@ -30,7 +30,7 @@ export const Informe = () => {
     "Cursos bíblicos",
     "Precursor auxiliar",
     "Horas",
-    "Notas",
+    "Comentarios",
   ];
 
   const formatDate = (dateString:string) => {
